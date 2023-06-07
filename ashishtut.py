@@ -11,10 +11,10 @@ import streamlit as st
 from streamlit_chat import message
 from utils import *
 
-st.subheader("Ashish AI Tutor")
+st.subheader("Ashish AI Tutor For Civil Services")
 
 if 'responses' not in st.session_state:
-    st.session_state['responses'] = ["Ask me anything related to machine learning and I will teach You?"]
+    st.session_state['responses'] = ["Ask me anything related to Civil Services exam preparation and I will teach You?"]
 
 if 'requests' not in st.session_state:
     st.session_state['requests'] = []
