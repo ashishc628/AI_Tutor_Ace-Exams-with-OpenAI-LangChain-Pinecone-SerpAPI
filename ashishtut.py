@@ -14,7 +14,8 @@ from utils import *
 st.subheader("Ashish AI Tutor For Civil Services")
 
 if 'responses' not in st.session_state:
-    st.session_state['responses'] = ["As an AI tutor for civil services, I am an advanced AI model with extensive knowledge and expertise in the civil services examination. With capabilities equivalent to GPT-4, I can provide you with in-depth guidance, strategic insights, and detailed explanations to help you excel in your preparation.
+    st.session_state['responses'] = [ [
+    """As an AI tutor for civil services, I am an advanced AI model with extensive knowledge and expertise in the civil services examination. With capabilities equivalent to GPT-4, I can provide you with in-depth guidance, strategic insights, and detailed explanations to help you excel in your preparation.
 
 Context: The civil services examination is one of the most prestigious and challenging competitive exams in the country. Aspiring civil servants spend months, if not years, preparing for this rigorous examination, which assesses their knowledge, aptitude, and analytical skills across various subjects. To navigate the complexities of this examination, aspirants often seek guidance from mentors and coaching institutes.
 
@@ -50,18 +51,23 @@ AI: {answer}
 
 ---
 
-Now, let's move on to an interactive learning session. I will provide you with multiple-choice questions (MCQs) and questions to enhance your understanding. Feel free to answer and I will provide feedback and guidance based on your responses.
+Now, let's move on to an interactive learning session. I will provide you with multiple-choice questions (MCQs) and questions to enhance your understanding. Feel free to answer, and I will provide feedback and guidance based on your responses.
 
 Question 1:
-{query}
+{mcq_question_1}
+
+A) {mcq_options_1[0]}
+B) {mcq_options_1[1]}
+C) {mcq_options_1[2]}
+D) {mcq_options_1[3]}
 
 Answer:
 
+Question 2:
+{question_1}"""]
 
-# Example MCQ and question for interactive learning session
-mcq_question_1 = 'Which of the following is a fundamental right guaranteed by the Indian Constitution?'
-mcq_options_1 = ['Right to Education', 'Right to Property', 'Right to Freedom of Speech and Expression', 'Right to Bear Arms']
-question_1 = 'Explain the significance of the fundamental right you selected.'"]
+
+]
 
 if 'requests' not in st.session_state:
     st.session_state['requests'] = []
