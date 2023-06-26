@@ -1,3 +1,12 @@
+import os
+import streamlit as st
+from langchain import LLMChain
+from langchain.agents import load_tools
+from langchain.memory import ConversationBufferWindowMemory
+from langchain.chat_models import ChatOpenAI
+from langchain.prompts import PromptTemplate
+from langchain.chains import ConversationChain
+from langchain.agents import load_tools
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import ConversationChain
 from langchain.chains.conversation.memory import ConversationBufferWindowMemory
@@ -10,12 +19,26 @@ from langchain.prompts import (
 import streamlit as st
 from streamlit_chat import message
 from utils import *
-
+os.environ['SERPAPI_API_KEY'] = '4150cf22ec6b59eb414683e90a97cd1838b598058f8d3457c1feb8acf01dbfc7'
 st.subheader("Ashish AI Tutor For Civil Services")
 
 if 'responses' not in st.session_state:
-    st.session_state['responses'] = [ [
-    """As an AI tutor for civil services, I am an advanced AI model with extensive knowledge and expertise in the civil services examination. With capabilities equivalent to GPT-4, I can provide you with in-depth guidance, strategic insights, and detailed explanations to help you excel in your preparation.
+    st.session_state['responses'] =["How can i assist you"]
+
+
+
+
+
+if 'requests' not in st.session_state:
+    st.session_state['requests'] = []
+llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key="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",max_tokens=1000)
+tools = load_tools(["serpapi", "llm-math"], llm=llm)
+
+if 'buffer_memory' not in st.session_state:
+            st.session_state.buffer_memory=ConversationBufferWindowMemory(k=10,return_messages=True)
+
+
+system_msg_template = SystemMessagePromptTemplate.from_template(template="""As an AI tutor for civil services, I am an advanced AI model with extensive knowledge and expertise in the civil services examination. With capabilities equivalent to GPT-4, I can provide you with in-depth guidance, strategic insights, and detailed explanations to help you excel in your preparation.
 
 Context: The civil services examination is one of the most prestigious and challenging competitive exams in the country. Aspiring civil servants spend months, if not years, preparing for this rigorous examination, which assesses their knowledge, aptitude, and analytical skills across various subjects. To navigate the complexities of this examination, aspirants often seek guidance from mentors and coaching institutes.
 
@@ -38,55 +61,28 @@ The following are examples of conversations that demonstrate my capabilities:
 ---
 
 User: What are some effective time management techniques for civil services preparation?
-AI: {answer}
+AI: answer
 
 User: Can you provide an explanation of the concept of federalism in Indian polity?
-AI: {answer}
+AI: answer
 
 User: What are the major economic reforms undertaken in India post-liberalization?
-AI: {answer}
+AI: answer
 
 User: Please suggest some recommended resources for current affairs preparation.
-AI: {answer}
+AI: answer
 
----
-
-Now, let's move on to an interactive learning session. I will provide you with multiple-choice questions (MCQs) and questions to enhance your understanding. Feel free to answer, and I will provide feedback and guidance based on your responses.
-
-Question 1:
-{mcq_question_1}
-
-A) {mcq_options_1[0]}
-B) {mcq_options_1[1]}
-C) {mcq_options_1[2]}
-D) {mcq_options_1[3]}
-
-Answer:
-
-Question 2:
-{question_1}"""]
-
-
-]
-
-if 'requests' not in st.session_state:
-    st.session_state['requests'] = []
-
-llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key="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")
-
-if 'buffer_memory' not in st.session_state:
-            st.session_state.buffer_memory=ConversationBufferWindowMemory(k=3,return_messages=True)
-
-
-system_msg_template = SystemMessagePromptTemplate.from_template(template="""Answer the question as truthfully as possible using the provided context, 
-and if the answer is not contained within the text below, say 'I don't know'""")
+Current conversation:
+{history}
+Human: {input}
+AI:""")
 
 
 human_msg_template = HumanMessagePromptTemplate.from_template(template="{input}")
 
 prompt_template = ChatPromptTemplate.from_messages([system_msg_template, MessagesPlaceholder(variable_name="history"), human_msg_template])
 
-conversation = ConversationChain(memory=st.session_state.buffer_memory, prompt=prompt_template, llm=llm, verbose=True)
+conversation = ConversationChain(memory=st.session_state.buffer_memory, prompt=prompt_template, llm=llm, verbose=False)
 
 
 
