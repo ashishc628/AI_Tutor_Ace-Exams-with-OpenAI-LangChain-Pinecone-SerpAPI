@@ -45,7 +45,7 @@ human_msg_template = HumanMessagePromptTemplate.from_template(template="{input}"
 
 prompt_template = ChatPromptTemplate.from_messages([system_msg_template, MessagesPlaceholder(variable_name="history"), human_msg_template])
 
-conversation = ConversationChain(memory=st.session_state.buffer_memory, prompt=prompt_template, llm=llm, verbose=False)
+conversation = ConversationChain(memory=st.session_state.ConversationSummaryBufferMemory, prompt=prompt_template, llm=llm, verbose=False)
 
 
 
