@@ -31,7 +31,7 @@ llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key="sk-tWIcx7Sq4Z05IrnZ
 tools = load_tools(["serpapi", "llm-math"], llm=llm)
 
 if 'buffer_memory' not in st.session_state:
-            st.session_state.buffer_memory=ConversationBufferWindowMemory(k=10,return_messages=True)
+            st.session_state.buffer_memory=ConversationBufferWindowMemory(k=3,return_messages=True)
 
 
 system_msg_template = SystemMessagePromptTemplate.from_template(template="""
