@@ -71,8 +71,6 @@ AI: answer
 Human: {input}
 AI:""")
 
-""")
-
 
 human_msg_template = HumanMessagePromptTemplate.from_template(template="{input}")
 
