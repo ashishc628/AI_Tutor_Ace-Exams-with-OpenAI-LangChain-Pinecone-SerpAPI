@@ -5,8 +5,8 @@ import streamlit as st
 openai.api_key = "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"
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
-pinecone.init(api_key='ac1f607e-7dba-47b4-841c-34181e799396', environment='us-west1-gcp-free')
-index = pinecone.Index('ashish-tut')
+pinecone.init(api_key='ebfcc25a-1f25-4338-b9f6-ce698d1ea83b', environment='us-west4-gcp-free')
+index = pinecone.Index('eventchat')
 
 def find_match(input):
     input_em = model.encode(input).tolist()
