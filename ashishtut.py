@@ -27,7 +27,7 @@ if 'responses' not in st.session_state:
 
 if 'requests' not in st.session_state:
     st.session_state['requests'] = []
-llm = ChatOpenAI(model_name="gpt-4", openai_api_key="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")
+llm = ChatOpenAI(model_name="gpt-4",temperature=0.7 openai_api_key="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")
 tools = load_tools(["serpapi", "llm-math"], llm=llm)
 
 if 'buffer_memory' not in st.session_state:
