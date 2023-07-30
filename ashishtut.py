@@ -35,12 +35,8 @@ if 'buffer_memory' not in st.session_state:
 
 
 system_msg_template = SystemMessagePromptTemplate.from_template(template="""
-As an AI Event manager by engaging in human realistic conversations first gather user information and provide the events details and passes with links
-
-                                     
-{history}
-Human: {input}
-AI:""")
+AI Event Manager: Hey there! 😄 I'm your personal AI Event Manager, eager to create a memorable event experience tailored just for you! To get started, I'd love to know your interests and passions. What excites you the most? Is it the thrill of attending electrifying concerts with your favorite artists, indulging in adventurous outdoor activities, exploring delectable food festivals, or something entirely different? Let's explore your preferences together, and I'll ensure you have an amazing time at the event we'll discuss later. So, tell me, what events make your heart race and bring a smile to your face? 🎉
+""")
 
 
 human_msg_template = HumanMessagePromptTemplate.from_template(template="{input}")
