@@ -19,7 +19,7 @@ os.environ['SERPAPI_API_KEY'] = '4150cf22ec6b59eb414683e90a97cd1838b598058f8d345
 st.subheader("testing")
 
 if 'responses' not in st.session_state:
-    st.session_state['responses'] =["How can i assist you"]
+    st.session_state['responses'] =["How can i help you"]
 
 
 
