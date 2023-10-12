@@ -6,3 +6,4 @@ pinecone-client
 openai
 beautifulsoup4
 google-search-results
+numexpr
