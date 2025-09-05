@@ -1,5 +1,10 @@
 # **AI Event Manager Chatbot** 🎉🤖
 
+
+<p align="center">
+  <img src="flow.png" alt="NL2SQL Workflow" width="600"/>
+</p>
+
 **AI Event Manager** is an interactive chatbot that helps users plan and discover personalized event experiences. It leverages OpenAI, LangChain, Pinecone, and Sentence Transformers to provide intelligent recommendations and maintain conversational context.  
 
 ---
@@ -41,17 +46,20 @@
    ```bash
    git clone <repo-url>
 2. Install dependencies:
-
-pip install -r requirements.txt
+   ```bash
+   pip install -r requirements.txt
 
 
 3. Add your API keys in a .env file:
 
+```bash
   OPENAI_API_KEY=<your_openai_key>
   SERPAPI_API_KEY=<your_serpapi_key>
   PINECONE_API_KEY=<your_pinecone_key>
 
 
-4. Run the app:
+flow\
 
+4. Run the app:
+   ```bash
   streamlit run app.py
