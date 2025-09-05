@@ -57,9 +57,5 @@
   SERPAPI_API_KEY=<your_serpapi_key>
   PINECONE_API_KEY=<your_pinecone_key>
 
-
-flow\
-
-4. Run the app:
-   ```bash
+  Run the app:
   streamlit run app.py
