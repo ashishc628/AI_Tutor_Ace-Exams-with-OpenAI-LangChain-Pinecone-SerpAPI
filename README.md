@@ -2,8 +2,8 @@
 
 
 <p align="center">
-  <img src="flow.png" alt="NL2SQL Workflow" width="600"/>
-</p>
+  <img src="flow.png" alt="Chatbot Workflow" width="600"/>
+</p> 
 
 **AI Event Manager** is an interactive chatbot that helps users plan and discover personalized event experiences. It leverages OpenAI, LangChain, Pinecone, and Sentence Transformers to provide intelligent recommendations and maintain conversational context.  
 
